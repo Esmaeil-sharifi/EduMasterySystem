@@ -1,4 +1,6 @@
 ﻿# EduMasterySystem
+ 
+EduMasterySystem is a comprehensive education management system designed to enhance the processes of teaching and learning by efficiently managing tutors, students, and courses. This platform allows users to seamlessly handle all aspects of education, including course scheduling, student enrollment, tracking tutor performance, and managing educational resources. Built with modern technologies like the MERN stack, EduMasterySystem provides an optimized and scalable solution for educational institutions, helping to improve the quality of education and streamline administrative tasks.
 
  ## Features Completed
 
