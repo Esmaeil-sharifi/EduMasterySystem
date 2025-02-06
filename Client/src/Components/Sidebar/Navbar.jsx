@@ -52,7 +52,7 @@ const Navbar = ({ children }) => {
     //{ icon: <HiOutlineHome />, title: "Dashboard", address: "/dashboard" },
     { icon: <TbLayoutGridAdd />, title: "Contents", address: "/contents" },
     { icon: <TbBrandSpeedtest />, title: "Quizzes", address: "/quizzes" },
-    { icon: <AiOutlineQuestion />, title: "Class questions", address: "/Class questions" },
+    { icon: <AiOutlineQuestion />, title: "Class questions", address: "/doubts" },
     // { icon: <TbMessages />, title: "Message", address: "/messages" },
     { icon: <TbUsers />, title: "Leader Board", address: "/leaderboard" },
    // { icon: <BsBookmarkCheck />, title: "Bookmarks", address: "/bookmarks" },
@@ -63,7 +63,7 @@ const Navbar = ({ children }) => {
     { icon: <TbBrandSpeedtest />, title: "Quizzes", address: "/quizzes" },
     { icon: <TbLayoutGridAdd />, title: "Contents", address: "/contents" },
     { icon: <TbUsers />, title: "Leader Board", address: "/leaderboard" },
-    { icon: <AiOutlineQuestion />, title: "Class questions", address: "/Class questions" },
+    { icon: <AiOutlineQuestion />, title: "Class questions", address: "/doubts" },
     // { icon: <TbMessages />, title: "Message", address: "/messages" },
   ];
 
