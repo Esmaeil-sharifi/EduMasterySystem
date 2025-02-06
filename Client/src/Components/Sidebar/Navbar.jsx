@@ -49,13 +49,13 @@ const Navbar = ({ children }) => {
     { icon: <TbUsers />, title: "Leader Board", address: "/leaderboard" },
   ];
   const studentData = [
-    { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
-    { icon: <TbBrandSpeedtest />, title: "Quizzes", address: "/quizzes" },
+    //{ icon: <HiOutlineHome />, title: "Dashboard", address: "/dashboard" },
     { icon: <TbLayoutGridAdd />, title: "Contents", address: "/contents" },
-    { icon: <AiOutlineQuestion />, title: "Doubts", address: "/doubts" },
+    { icon: <TbBrandSpeedtest />, title: "Quizzes", address: "/quizzes" },
+    { icon: <AiOutlineQuestion />, title: "Class questions", address: "/Class questions" },
     // { icon: <TbMessages />, title: "Message", address: "/messages" },
     { icon: <TbUsers />, title: "Leader Board", address: "/leaderboard" },
-    // { icon: <BsBookmarkCheck />, title: "Bookmarks", address: "/bookmarks" },
+   // { icon: <BsBookmarkCheck />, title: "Bookmarks", address: "/bookmarks" },
   ];
   const tutorData = [
     { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
@@ -63,7 +63,7 @@ const Navbar = ({ children }) => {
     { icon: <TbBrandSpeedtest />, title: "Quizzes", address: "/quizzes" },
     { icon: <TbLayoutGridAdd />, title: "Contents", address: "/contents" },
     { icon: <TbUsers />, title: "Leader Board", address: "/leaderboard" },
-    { icon: <AiOutlineQuestion />, title: "Doubts", address: "/doubts" },
+    { icon: <AiOutlineQuestion />, title: "Class questions", address: "/Class questions" },
     // { icon: <TbMessages />, title: "Message", address: "/messages" },
   ];
 
@@ -149,7 +149,7 @@ const Navbar = ({ children }) => {
             {userType == "Student" ? (
               premium == "false" ? (
                 <Link href="/" className="nav-link">
-                  🔥 Access all features with premium ! <span>Buy now !</span>
+                  🔥 Dear students, welcome to LMS!
                 </Link>
               ) : (
                 "🔥You are a premium member !"

@@ -3,80 +3,63 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDashboardData } from "../../Redux/dashboard/action";
 
-//Component imports
+// Component imports
 import Navbar from "../../Components/Sidebar/Navbar";
 import SalesDiv from "../../Components/SalesDiv/SalesDiv";
 import Header from "../../Components/Header/Header";
 
 // Icons import
-import { PiKeyReturnThin, PiCurrencyCircleDollarLight } from "react-icons/pi";
-import { FiShoppingCart } from "react-icons/fi";
-import { LiaHandHoldingUsdSolid } from "react-icons/lia";
-import { BsTruck, BsClipboardMinus, BsDownload } from "react-icons/bs";
-import { AiOutlineTag, AiOutlineLineChart } from "react-icons/ai";
-import {
-  BarChart,
-  Bar,
-  ReferenceLine,
-  XAxis,
-  Legend,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
+import { BsClipboardMinus } from "react-icons/bs";
+import { AiOutlineTag } from "react-icons/ai";
+import { BarChart, Bar, ReferenceLine, XAxis, YAxis, Legend, ResponsiveContainer, Tooltip } from "recharts";
 
-//CSS imports
+// CSS imports
 import "react-vertical-timeline-component/style.min.css";
-import { Tooltip } from "antd";
 import "./Home.css";
 
-//Image imports
+// Image imports
 import demo from "../../Assets/cartoon.svg";
 
-//Data imports
-import { barData, pieData, COLORS } from "../../data.js";
+// Data imports
+import { barData } from "../../data.js";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const {
-    data: { isAuthenticated },
-  } = useSelector((store) => store.auth);
-
+  const { data: { isAuthenticated } } = useSelector((store) => store.auth);
   const { dashboard } = useSelector((store) => store.dashboard);
 
-  //overview data
+  // Overview data
   const overviewData = [
     {
-      icon: <FiShoppingCart />,
-      title: "Admins",
+      icon: <img src="https://cdn-icons-png.freepik.com/256/6518/6518584.png" alt="admin Icon" width={24} height={24} />, 
+      title: "Admins", 
       number: dashboard?.admins?.length || 0,
     },
     {
-      icon: <PiKeyReturnThin />,
-      title: "Tutors",
+      icon: <img src="https://cdn-icons-png.freepik.com/256/9571/9571211.png" alt="tutor Icon" width={24} height={24} />, 
+      title: "Tutors", 
       number: dashboard?.tutors?.length || 0,
     },
     {
-      icon: <BsTruck />,
-      title: "Student",
+      icon: <img src="https://cdn-icons-png.freepik.com/256/5560/5560384.png" alt="Student Icon" width={24} height={24} />, 
+      title: "Students", 
       number: dashboard?.students?.length || 0,
     },
     {
-      icon: <AiOutlineTag />,
-      title: "Contents",
+      icon: <AiOutlineTag />, 
+      title: "Contents", 
       number: dashboard?.contents?.length || 0,
     },
     {
-      icon: <BsClipboardMinus />,
-      title: "Quizzes",
+      icon: <BsClipboardMinus />, 
+      title: "Quizzes", 
       number: dashboard?.quizzes?.length || 0,
     },
     {
-      icon: <AiOutlineLineChart />,
-      title: "Doubts",
+      icon: <img src="https://cdn-icons-png.freepik.com/256/10015/10015080.png" alt="system Icon" width={24} height={24} />,
+      title: "Class questions",
       number: dashboard?.doubts?.length || 0,
     },
   ];
@@ -87,7 +70,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      return navigate("/");
+      navigate("/");
     }
   }, []);
 
@@ -98,109 +81,49 @@ const Home = () => {
           {/* Header */}
           <Header Title={"Overview"} Address={"Default"} />
 
-          {/* overview section */}
+          {/* Overview section */}
           <div className="overview">
             <div className="overview-left">
               <div>
-                <h2> Welcome to LMS</h2>
-                <p>Here whats happing in your account today</p>
+              <h2>Welcome to LMS</h2>
               </div>
               <div>
-                <button>Whats New !</button>
+              <button>What's New!</button>
               </div>
               <img src={demo} alt="" />
             </div>
             <div className="overview-right">
-              {overviewData?.map(({ icon, title, number }, i) => {
-                return (
-                  <SalesDiv Icon={icon} Title={title} Number={number} key={i} />
-                );
-              })}
+              {overviewData?.map(({ icon, title, number }, i) => (
+                <SalesDiv Icon={icon} Title={title} Number={number} key={i} />
+              ))}
             </div>
           </div>
 
-          {/* Bar nd Pie Chart */}
+          {/* Bar Chart */}
           <div className="charts">
             <div className="lineChart">
               <div className="chartHead">
-                <p>Premium Balance</p>
+                <p>Students' Scores</p>
               </div>
               <div className="chartBox">
                 <div className="chartOne">
                   <ResponsiveContainer>
-                    <BarChart width={200} height={300} data={barData}>
+                    <BarChart width={400} height={300} data={barData}>
                       <XAxis dataKey="name" />
+                      <YAxis tickCount={20} domain={[0,20]} />
                       <Tooltip />
-                      <Legend
-                        verticalAlign="top"
-                        wrapperStyle={{ lineHeight: "40px" }}
-                      />
+                      <Legend verticalAlign="top" wrapperStyle={{ lineHeight: "40px" }} />
                       <ReferenceLine y={0} stroke="#000" />
-                      <Bar dataKey="Earning" fill="#8884d8" />
+                      <Bar dataKey="score" fill="#8884d8" />
                     </BarChart>
                   </ResponsiveContainer>
-                </div>
-                <div className="chartTwo">
-                  <div>
-                    <BsDownload />
-                    <div>
-                      <p>Income</p>
-                      <h4>$22,678</h4>
-                    </div>
-                    <p>+$456</p>
-                  </div>
-                  <div>
-                    <LiaHandHoldingUsdSolid />
-                    <div>
-                      <p>Expense</p>
-                      <h4>$12,057</h4>
-                    </div>
-                    <p>+$256</p>
-                  </div>
-                  <div>
-                    <PiCurrencyCircleDollarLight />
-                    <div>
-                      <p>Cashback</p>
-                      <h4>8,475</h4>
-                    </div>
-                    <p>+$256</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="pieChart">
-              <div className="chartHead">
-                <p>Occupancy</p>
-              </div>
-              <div className="pieBox">
-                <ResponsiveContainer>
-                  <PieChart width={800} height={400}>
-                    <Pie
-                      data={pieData}
-                      innerRadius={80}
-                      outerRadius={100}
-                      fill="#8884d8"
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {pieData.map((entry, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={COLORS[index % COLORS.length]}
-                        />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
-                <div className="pieData">
-                  <span>100</span>
-                  <p>Total Profit</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div className="homeFooter">
-            Copyright 2024 © LMS created by Pushpendra Singh
+            Copyright 2025 © LMS created by Esmaeil Sharifi
           </div>
         </div>
       </Navbar>
@@ -209,3 +132,229 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getDashboardData } from "../../Redux/dashboard/action";
+
+// //Component imports
+// import Navbar from "../../Components/Sidebar/Navbar";
+// import SalesDiv from "../../Components/SalesDiv/SalesDiv";
+// import Header from "../../Components/Header/Header";
+
+// // Icons import
+// import { PiKeyReturnThin, PiCurrencyCircleDollarLight } from "react-icons/pi";
+// import { FiShoppingCart } from "react-icons/fi";
+// import { LiaHandHoldingUsdSolid } from "react-icons/lia";
+// import { BsTruck, BsClipboardMinus, BsDownload } from "react-icons/bs";
+// import { AiOutlineTag, AiOutlineLineChart } from "react-icons/ai";
+// import {
+//   BarChart,
+//   Bar,
+//   ReferenceLine,
+//   XAxis,
+//   YAxis,
+//   Legend,
+//   ResponsiveContainer,
+//   PieChart,
+//   Pie,
+//   Cell,
+// } from "recharts";
+
+// //CSS imports
+// import "react-vertical-timeline-component/style.min.css";
+// import { Tooltip } from "antd";
+// import "./Home.css";
+
+// //Image imports
+// import demo from "../../Assets/cartoon.svg";
+
+// //Data imports
+// import { barData, pieData, COLORS } from "../../data.js";
+
+// const Home = () => {
+//   const navigate = useNavigate();
+//   const dispatch = useDispatch();
+
+//   const {
+//     data: { isAuthenticated },
+//   } = useSelector((store) => store.auth);
+
+//   const { dashboard } = useSelector((store) => store.dashboard);
+
+//   //overview data
+//   const overviewData = [
+//     {
+//       icon: <img src="https://cdn-icons-png.freepik.com/256/6518/6518584.png" alt="admin Icon" width={24} height={24} />,
+//       title: "Admins",
+//       number: dashboard?.admins?.length || 0,
+//     },
+//     {
+//       icon: <img src="https://cdn-icons-png.freepik.com/256/9571/9571211.png" alt="tutor Icon" width={24} height={24} />,
+//       title: "Tutors",
+//       number: dashboard?.tutors?.length || 0,
+//     },
+//     // {
+//     //   icon: <BsTruck />,
+//     //   title: "Student",
+//     //   number: dashboard?.students?.length || 0,
+//     // },
+//     {
+//       icon: <img src="https://cdn-icons-png.freepik.com/256/5560/5560384.png" alt="Quizzes Icon" width={24} height={24} />,
+//       title: "Student",
+//       number: dashboard?.quizzes?.length || 0,
+//     },
+//     {
+//       icon: <AiOutlineTag />,
+//       title: "Contents",
+//       number: dashboard?.contents?.length || 0,
+//     },
+//     {
+//       icon: <BsClipboardMinus />,
+//       title: "Quizzes",
+//       number: dashboard?.quizzes?.length || 0,
+//     },
+//     {
+//       icon: <img src="https://cdn-icons-png.freepik.com/256/2117/2117687.png" alt="system Icon" width={24} height={24} />,
+//       title: "System problems",
+//       number: dashboard?.quizzes?.length || 0,
+//     },
+    
+//     // {
+//     //   icon: <AiOutlineLineChart />,
+//     //   title: "System problems",
+//     //   number: dashboard?.doubts?.length || 0,
+//     // },
+//   ];
+
+//   useEffect(() => {
+//     dispatch(getDashboardData());
+//   }, []);
+
+//   useEffect(() => {
+//     if (!isAuthenticated) {
+//       return navigate("/");
+//     }
+//   }, []);
+
+//   return (
+//     <div>
+//       <Navbar>
+//         <div className="main">
+//           {/* Header */}
+//           <Header Title={"Overview"} Address={"Default"} />
+
+//           {/* overview section */}
+//           <div className="overview">
+//             <div className="overview-left">
+//               <div>
+//                 <p>   </p>
+//                 <h2> Welcome to LMS</h2>
+//               </div>
+//               <div>
+//                 <button>Whats New !</button>
+//               </div>
+//               <img src={demo} alt="" />
+//             </div>
+//             <div className="overview-right">
+//               {overviewData?.map(({ icon, title, number }, i) => {
+//                 return (
+//                   <SalesDiv Icon={icon} Title={title} Number={number} key={i} />
+//                 );
+//               })}
+//             </div>
+//           </div>
+
+//           {/* Bar nd Pie Chart */}
+//           <div className="charts">
+//             <div className="lineChart">
+//               <div className="chartHead">
+//                 <p>Average scorese</p>
+//               </div>
+//               <div className="chartBox">
+//                 <div className="chartOne">
+//                   <ResponsiveContainer>
+//                     <BarChart width={200} height={300} data={barData}>
+//                       <XAxis dataKey="name" />
+//                       <Tooltip />
+//                       <Legend
+//                         verticalAlign="top"
+//                         wrapperStyle={{ lineHeight: "40px" }}
+//                       />
+//                       <ReferenceLine y={0} stroke="#000" />
+//                       <Bar dataKey="Earning" fill="#8884d8" />
+//                     </BarChart>
+//                   </ResponsiveContainer>
+//                 </div>
+//                 <div className="chartTwo">
+//                   <div>
+//                     <BsDownload />
+//                     <div>
+//                       <p>Income</p>
+//                       <h4>$22,678</h4>
+//                     </div>
+//                     <p>+$456</p>
+//                   </div>
+//                   <div>
+//                     <LiaHandHoldingUsdSolid />
+//                     <div>
+//                       <p>Expense</p>
+//                       <h4>$12,057</h4>
+//                     </div>
+//                     <p>+$256</p>
+//                   </div>
+//                   <div>
+//                     <PiCurrencyCircleDollarLight />
+//                     <div>
+//                       <p>Cashback</p>
+//                       <h4>8,475</h4>
+//                     </div>
+//                     <p>+$256</p>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//             <div className="pieChart">
+//               <div className="chartHead">
+//                 <p>Occupancy</p>
+//               </div>
+//               <div className="pieBox">
+//                 <ResponsiveContainer>
+//                   <PieChart width={800} height={400}>
+//                     <Pie
+//                       data={pieData}
+//                       innerRadius={80}
+//                       outerRadius={100}
+//                       fill="#8884d8"
+//                       paddingAngle={5}
+//                       dataKey="value"
+//                     >
+//                       {pieData.map((entry, index) => (
+//                         <Cell
+//                           key={`cell-${index}`}
+//                           fill={COLORS[index % COLORS.length]}
+//                         />
+//                       ))}
+//                     </Pie>
+//                   </PieChart>
+//                 </ResponsiveContainer>
+//                 <div className="pieData">
+//                   <span>100</span>
+//                   <p>Total Profit</p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//           <div className="homeFooter">
+//             Copyright 2025 © LMS created by Esmaeil sharifi
+//           </div>
+//         </div>
+//       </Navbar>
+//     </div>
+//   );
+// };
+
+// export default Home;

@@ -160,15 +160,12 @@ const Login = () => {
   return (
     <div className="login">
       <div>
-        <p>Please use this credentials.</p>
-        <p>Email : test@gmail.com</p>
-        <p>Password : test</p>
       </div>
       <br />
       <div className="loginContainer">
         <div className="loginImage">
           <img
-            src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7863.jpg"
+            src="https://img.freepik.com/free-photo/computer-security-with-login-password-padlock_107791-16191.jpg"
             alt=""
           />
         </div>

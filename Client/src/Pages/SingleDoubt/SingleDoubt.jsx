@@ -43,10 +43,10 @@ const SingleDoubt = () => {
   return (
     <Navbar>
       <div className="singleContent">
-        <Header Title={"Doubt Details"} Address={"Doubt"} />
+        <Header Title={"Details"} Address={"Class questions"} />
         <div className="singleContentData">
           <div className="fileContainer">
-            {singleDoubt?.fileType == "jpg" ||
+            {/* {singleDoubt?.fileType == "jpg" ||
             singleDoubt?.fileType == "jpeg" ? (
               <img src={singleDoubt.fileUrl} alt="" />
             ) : (
@@ -59,7 +59,7 @@ const SingleDoubt = () => {
               >
                 <source src={singleDoubt.fileUrl} />
               </video>
-            )}
+            )} */}
           </div>
         </div>
 

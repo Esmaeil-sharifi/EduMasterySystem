@@ -142,7 +142,7 @@ const Doubts = () => {
   return (
     <Navbar>
       <div className="content">
-        <Header Title={"Doubts"} Address={"Doubts"} />
+        <Header Title={"Class questions"} Address={"Class questions"} />
 
         {/* Filter by Class */}
         <select style={{ width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', marginTop: '20px', marginBottom: '10px' }} value={filterDoubt} onChange={(e) => setFilterDoubt(e.target.value)}>
@@ -154,7 +154,7 @@ const Doubts = () => {
           <option value={9}>9</option>
           <option value={10}>10</option>
         </select>
-        <h3>Unsolved Doubts</h3>
+        <h3>Unanswered questions</h3>
         <div className="contentData">
           {doubt
             ?.filter((elem) => elem.resolved == "No")
@@ -162,7 +162,7 @@ const Doubts = () => {
               return <DoubtBox data={data} key={i} />;
             })}
         </div>
-        <h3>Resolved Doubts</h3>
+        <h3>Solved questions</h3>
 
         <div className="contentData">
           {doubt
@@ -178,7 +178,7 @@ const Doubts = () => {
 
         {/* drawer  */}
         <Drawer
-          title="Create a new doubt"
+          title="Ask a new question"
           width={720}
           onClose={onClose}
           open={open}
@@ -227,14 +227,14 @@ const Doubts = () => {
             <div className="uploadedImgDiv">
               <p>File Type : {fileType}</p>
               <p>File Size : {size} mb</p>
-              <p>Thumbnail :</p>
+              <p></p>
               <img src={thumbnailUrl} alt="thumbnail" />
             </div>
           ) : (
             ""
           )}
           <button className="submitBtn" onClick={handleSubmit}>
-            Add Doubt
+            Add question
           </button>
 
           {/* drawer loading indicator */}

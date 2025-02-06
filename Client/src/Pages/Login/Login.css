@@ -5,25 +5,27 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-color: rgba(37, 191, 229, 0.647);
+  background-color: rgba(94, 236, 246, 0.962);
 }
 .loginContainer {
-  width: 900px;
+  width: 700px;
   margin: 0 auto;
   padding: 2rem 0;
   display: flex;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255,255,255);
 }
 .loginImage {
-  width: 43%;
+  width: 40%;
 }
 .loginImage img {
-  width: 85%;
-  margin-left: 1rem;
+  width: 120%;
+  margin-left: 0.5rem;
+  height: 100%;
 }
 .loginDetail {
-  padding: 2rem 4rem;
+  padding: 2rem 3rem;
   width: 50%;
+  margin-left: 3rem;
 }
 .loginDetail > div:nth-child(1) {
   display: flex;
