@@ -1,2 +1,2 @@
-const BackendURL = "http://localhost:8000";
+const BackendURL = "https://edumasterysystem-server.onrender.com";
 export default BackendURL;
