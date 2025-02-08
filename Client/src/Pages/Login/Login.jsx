@@ -147,13 +147,16 @@ const Login = () => {
           });
         } else {
           setLoading(false);
-          return navigate("/home");
+          return navigate("/leaderboard");
         }
       });
     }
   };
 
   if (auth.data.isAuthenticated) {
+    if (auth.data.isAuthenticated && auth.data.userType === "student") {
+      return <Navigate to="/" />;
+    }
     return <Navigate to="/home" />;
   }
 
