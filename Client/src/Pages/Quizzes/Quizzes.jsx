@@ -218,7 +218,7 @@ const Quizzes = () => {
               onChange={(e) => handleFormChange(e)}
             />
             <input
-              placeholder="Quiz Thumbnail"
+              placeholder="Quiz Description"
               type="url"
               name="thumbnail"
               value={formData.thumbnail}
