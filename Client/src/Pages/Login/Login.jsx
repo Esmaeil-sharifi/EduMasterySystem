@@ -25,6 +25,12 @@ const Login = () => {
     email: "",
     password: "",
   });
+   // اطلاعات ورود کاربران
+   const userLoginInfo = {
+    admin: { email: "admin@gmail.com", password: "123456" },
+    tutor: { email: "tutor@gmail.com", password: "123456" },
+    student: { email: "student@gmail.com", password: "123456" },
+  };
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -159,12 +165,25 @@ const Login = () => {
     }
     return <Navigate to="/home" />;
   }
-
   return (
     <div className="login">
-      <div>
-      </div>
-      <br />
+      {/* اطلاعات ورود کاربران */}
+      {formData.type && (
+        <div className="user-login-info"
+          style={{ 
+            background: "#f1f1f1", 
+            padding: "15px", 
+            textAlign: "center", 
+            borderBottom: "2px solid #ddd", 
+            fontSize: "16px",
+            marginBottom: "10px"
+          }}>
+          <h3>{formData.type.charAt(0).toUpperCase() + formData.type.slice(1)} Login Info</h3>
+          <p><strong>Email:</strong> <code>{userLoginInfo[formData.type]?.email}</code></p>
+          <p><strong>Password:</strong> <code>{userLoginInfo[formData.type]?.password}</code></p>
+        </div>
+      )}
+
       <div className="loginContainer">
         <div className="loginImage">
           <img
@@ -178,7 +197,7 @@ const Login = () => {
           </div>
 
           <div>
-            {/* login form  */}
+            {/* login form */}
             <form onSubmit={handleFormSubmit}>
               <select value={formData.type} name="type" onChange={handleFormChange}>
                 <option value="">Select user type</option>
