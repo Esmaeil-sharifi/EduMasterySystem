@@ -40,13 +40,13 @@ const Navbar = ({ children }) => {
 
   //Sidebar menu
   const adminData = [
-    { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
+   // { icon: <HiOutlineHome />, title: "Dashboard", address: "/home" },
     { icon: <RiAdminLine />, title: "Admins", address: "/admin" },
     { icon: <BiUserVoice />, title: "Tutors", address: "/tutor" },
     { icon: <PiStudentDuotone />, title: "Students", address: "/student" },
-    { icon: <TbBrandSpeedtest />, title: "Quizzes", address: "/quizzes" },
-    { icon: <TbLayoutGridAdd />, title: "Contents", address: "/contents" },
-    { icon: <TbUsers />, title: "Leader Board", address: "/leaderboard" },
+   // { icon: <TbBrandSpeedtest />, title: "Quizzes", address: "/quizzes" },
+   // { icon: <TbLayoutGridAdd />, title: "Contents", address: "/contents" },
+   // { icon: <TbUsers />, title: "Leader Board", address: "/leaderboard" },
   ];
   const studentData = [
     //{ icon: <HiOutlineHome />, title: "Dashboard", address: "/dashboard" },
