@@ -85,7 +85,7 @@ const Doubts = () => {
         onClose();
         return messageApi.open({
           type: "info",
-          content: "Doubt posted",
+          content: "Question posted",
           duration: 3,
         });
       }
