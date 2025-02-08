@@ -11,7 +11,7 @@ EduMasterySystem is a comprehensive education management system designed to enha
 - Students can raise doubts
 - Tutors can add responses to doubts
 - Tutors can only administer (delete/edit) their courses (Quizzes, Contents)
-- Admin can access to manage (delete/edit) all courses (Quizzes, Contents)
+- Admin can access to manage (delete/edit) all courses (Contents)
 - Students can't administer (delete/edit/create) courses (Quizzes, Contents)
 - Leaderboard showing top students with the maximum gaming points
 - LMS can interact with email
