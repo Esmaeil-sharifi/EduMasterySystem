@@ -23,7 +23,6 @@ const DoubtBox = ({ data }) => {
   return (
     <div className="contentDiv">
       <div>
-        <img src={data.thumbnailUrl} alt="thumbnail" />
       </div>
       <div>
         <div>
